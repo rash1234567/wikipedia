@@ -26,6 +26,9 @@ function fetchData (e) {
     const data = await response.json()
     const result = data.query.search
     console.log(result);
+
+    result.length < 1 && resultDisplay.innerHTML == `<p class='text-white text-xl'>Not Found</p>`
+
     resultDisplay.innerHTML = result.map((items) => {
         return `
         <div class='text-center w-full bg-white mt-2 md:w-3/12 p-4 max-h-56 md:mr-2 r'>
