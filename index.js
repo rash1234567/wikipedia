@@ -21,20 +21,17 @@ function fetchData (e) {
 }
 
  async function DisplayData (searchWords) {
+    resultDisplay.innerHTML = `<p class='text-2xl text-white'>Loading......</p>`
     const response = await fetch(`${wiki_url}${searchWords}`)
     const data = await response.json()
     const result = data.query.search
     console.log(result);
-    if(result.length = 0) {
-        resultDisplay.innerHTML = 'NOT FOUND'
-    }
-   { resultDisplay.innerHTML = result.map((items) => {
+    resultDisplay.innerHTML = result.map((items) => {
         return `
         <div class='text-center w-full bg-white mt-2 md:w-3/12 p-4 max-h-56 md:mr-2 r'>
         <h1 class='text-xl font-black cursor-pointer'><a href=http://en.wikipedia.org/?curid=${items.pageid} target="_blank">${items.title}</a></h1>
          <p ${items.snippet}</p>
      </div>`
     } )
-}
 }
 
